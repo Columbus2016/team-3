@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20161015072557) do
     t.string   "status"
     t.integer  "stage"
     t.string   "gender"
-    t.         "lat"
+    t.float    "lat"
     t.float    "long"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

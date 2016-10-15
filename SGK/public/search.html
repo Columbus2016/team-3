@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    
   <head>
     <title>Simple Map</title>
     <meta name="viewport" content="initial-scale=1.0">
@@ -16,14 +17,61 @@
     </style>
   </head>
   <body>
+      <script   src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <div id="map"></div>
     <script>
       var map;
+      var image;
+
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
+          center: {lat: 40, lng: 80},
           zoom: 8
         });
+
+        image = {
+          url : 'http://www.iconsdb.com/icons/preview/deep-pink/ribbon-7-xxl.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(20, 32),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 32)
+        };
+
+        $.ajax({
+              type: "GET",
+              url:    "/search/get_all_users", // should be mapped in routes.rb
+              data: {comment:"new comment"},
+              datatype:"jsonp", // check more option
+              success: function(data) {
+                       // handle response data
+                       console.log(data);
+                       for(var i = 0; i < data.length; i++){
+                            console.log(data[i].id);
+                            var lat = data[i].lat;
+                            var lon = data[i].lon;
+
+                            if (lat != null && lon != null){
+                                var infowindow = new google.maps.InfoWindow({
+                                    content: "contentString"
+                                });
+
+                                var marker = new google.maps.Marker({
+                                    position: {lat: lat, lng: lon},
+                                    map: map,
+                                    title: 'Test title',
+                                    icon: image
+                                });
+
+                                marker.addListener('click', function() {
+                                    infowindow.open(map, marker);
+                                });
+                            }
+                       }
+                       },
+              async:   true
+            });  
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJPp-WkZMRiOWXMCQxj9dcGCWhafLuv2U&callback=initMap"

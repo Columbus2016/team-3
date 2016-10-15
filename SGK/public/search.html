@@ -50,23 +50,42 @@
                        for(var i = 0; i < data.length; i++){
                             console.log(data[i].id);
                             var lat = data[i].lat;
-                            var lon = data[i].long;
+                            var long = data[i].long;
+                            lat = 0;
+                            long = 0;
 
-                            //if (lat != null && lon != null){
+                            if ((lat != null && long != null) || true){
                                 var infowindow = new google.maps.InfoWindow({
                                     content: "Mr. Poppers - Stage 2 Pancreas"
                                 });
+                                
 
-                                var marker = new google.maps.Marker({
-                                    position: {lat: -80, lng: 40},
-                                    map: map,
-                                    title: 'Test title'
+                                var marker;
+
+                                if(data[i].status.localCompare("cosurviver")){
+                                    marker = new google.maps.Marker({
+                                    position: {lat: lat, lng: long},
+                                        map: map,
+                                        title: 'Cosurviver'
+                                     });
+                                }
+                                else{
+                                    marker = new google.maps.Marker({
+                                    position: {lat: lat, lng: long},
+                                        map: map,
+                                        title: data[i].name + ' - ' + data[i].cancer_type + ': Stage ' + data[i].stage
+                                     });
+                                }
+
+                                infowindow.addListener('click', function(){
+                                    //OPEN CHAT HERE
+                                    console.log('opening chat');
                                 });
 
                                 marker.addListener('click', function() {
                                     infowindow.open(map, marker);
                                 });
-                            //}
+                            }
                        }
                        },
               async:   true

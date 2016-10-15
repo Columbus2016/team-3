@@ -17,10 +17,10 @@
   </head>
   <body ng-controller="ChatCtrl">
     <ul id="messages"></ul>
-    <form action="">
+    <form action="" ng-submit="">
       <input id="m" autocomplete="off" /><button>Send</button>
     </form>
-    <ul><li ng-repeat="sesh in sessions">{{sesh.room}}</li></ul>
+
 
 
 
@@ -30,15 +30,17 @@
     <script src="modules/app.js"></script>
     <script src="controllers/chatCtrl.js"></script>
     <script>
-      var socket = io();
-      $('form').submit(function(){
-        socket.emit('chat message', $('#m').val());
-        $('#m').val('');
-        return false;
-      });
-      socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
+        var socket = io();
+        $('form').submit(function(){
+            socket.emit('chat message', $('#m').val());
+            $('#m').val('');
+            return false;
+        });
+        socket.on('chat message', function(msg){
+            $('#messages').append($('<li>').text(msg));
+        });
+
+
 
 
     </script>

@@ -1,10 +1,10 @@
 import './login.html';
 import { Template } from 'meteor/templating';
-import 'login.html';
+import './login.html';
 
 var signingUp = true;
 
-var button = document.getElementById('button');
+var button = document.getElementById("button");
 console.log(button);
 button.innerHTML = "test"
 button.onclick = function(){

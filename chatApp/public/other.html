@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="chatApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+</head>
+<body ng-controller="ChatCtrl">
+    <a ng-click="addRoom()" id="addRoom">Add room</a>
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script src="modules/app.js"></script>
+<script src="controllers/chatCtrl.js"></script>
+<script>
+    var currRoom;
+    var socket = io();
+    $("#addRoom").click(function(evt){
+        evt.preventDefault();
+//        socket.emit('add room',{user1:2,user2:1,room})
+    });
+</script>
+</html>

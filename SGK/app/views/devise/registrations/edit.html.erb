@@ -82,7 +82,7 @@ body{
 	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
 }
 </style>
-<div class="container">
+<!-- <div class="container">
         <div class="row centered-form">
         <div class="col-xs-12 col-sm-10 col-md-10 col-sm-offset-2 col-md-offset-1">
         	<div class="panel panel-default">
@@ -94,7 +94,8 @@ body{
 			    			<div class="row">
 			    				<div class="col-xs-12 col-sm-12 col-md-12">
 			    					<div class="form-group">
-			                <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
+                      <%= f.text_field :name, autofocus: true, type:"text", name:"first_name", id:"first_name", class:"form-control input-sm", placeholder:"Full Name"%>
+			                <!-- <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name"> ->
 			    					</div>
 			    				</div>
 			    			</div>
@@ -106,21 +107,21 @@ body{
 			    			<div class="row">
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-                      <!-- <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br /> -->
+                      <!-- <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br /> ->
                       <%= f.password_field :password, autocomplete: "off", type:"password", name:"password", id:"password", class:"form-control input-sm", placeholder:"New Password" %>
                       <% if @minimum_password_length %>
                         <br />
                         <em><%= @minimum_password_length %> characters minimum</em>
                       <% end %>
-                    	<!-- <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password"> -->
+                    	<!-- <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password"> ->
 			    					</div>
 			    				</div>
 			    				<div class="col-xs-6 col-sm-6 col-md-6">
 			    					<div class="form-group">
-                      <!-- <%= f.label :password_confirmation %><br /> -->
+                      <!-- <%= f.label :password_confirmation %><br /> ->
                       <%= f.password_field :password_confirmation, autocomplete: "off", type: "password", name: "password_confirmation", id: "password_confirmation", class: "form-control input-sm", placeholder: "Confirm Password" %>
 
-                  		<!-- <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password"> -->
+                  		<!-- <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password"> ->
 			    					</div>
 			    				</div>
 			    			</div>
@@ -132,5 +133,5 @@ body{
 	    		</div>
     		</div>
     	</div>
-    </div>
+    </div> -->
     <% end %>

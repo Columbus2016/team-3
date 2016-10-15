@@ -5,5 +5,4 @@ class SearchControllerTest < ActionDispatch::IntegrationTest
     get search_get_all_users_url
     assert_response :success
   end
-
 end

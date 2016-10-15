@@ -1,14 +1,106 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Komen</title>
+    <title>SGK</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <style>
+    .navbar-default {
+      background-color: #e91e63;
+      border-color: #ad1457;
+    }
+    .navbar-default .navbar-brand {
+      color: #ecf0f1;
+    }
+    .navbar-default .navbar-brand:hover,
+    .navbar-default .navbar-brand:focus {
+      color: #ffbbbc;
+    }
+    .navbar-default .navbar-text {
+      color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav > li > a {
+      color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
+      color: #ffbbbc;
+    }
+    .navbar-default .navbar-nav > .active > a,
+    .navbar-default .navbar-nav > .active > a:hover,
+    .navbar-default .navbar-nav > .active > a:focus {
+      color: #ffbbbc;
+      background-color: #ad1457;
+    }
+    .navbar-default .navbar-nav > .open > a,
+    .navbar-default .navbar-nav > .open > a:hover,
+    .navbar-default .navbar-nav > .open > a:focus {
+      color: #ffbbbc;
+      background-color: #ad1457;
+    }
+    .navbar-default .navbar-toggle {
+      border-color: #ad1457;
+    }
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+      background-color: #ad1457;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #ecf0f1;
+    }
+    .navbar-default .navbar-collapse,
+    .navbar-default .navbar-form {
+      border-color: #ecf0f1;
+    }
+    .navbar-default .navbar-link {
+      color: #ecf0f1;
+    }
+    .navbar-default .navbar-link:hover {
+      color: #ffbbbc;
+    }
+    @media (max-width: 767px) {
+      .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+      }
+      .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+      .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #ffbbbc;
+      }
+      .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+      .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+      .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #ffbbbc;
+        background-color: #ad1457;
+      }
+    }
+    </style>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img alt="SGK" height="100%" src="http://ww5.komen.org/pages/img/logo.png">
+          </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+
+          <li><a href="http://localhost:5000/">Chat</a></li>
+        <li><a href="http://localhost:3000/search.html">Map</a></li>
+        <% if not current_user %>
+          <li><%= link_to('Login', new_user_session_path)  %>  </li>
+          <li><%= link_to('Register', new_user_registration_path)  %></li>
+        <% else %>
+          <li> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <li><%= link_to('Edit registration', edit_user_registration_path) %></li>
+        <% end %>
+      </ul>
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
